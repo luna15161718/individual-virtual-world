@@ -3,13 +3,14 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-
-    Vector3 MoveAmount;
+    Vector3 moveAmount;
+    CharacterController controller;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -20,11 +21,15 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position += MoveAmount;
+        controller.Move(moveAmount);
+        transform.rotation = Camera.main.transform.rotation;
+        if(!controller.isGrounded) {
+            controller.Move(new Vector3(0, -2, 0));
+        }
     }
 
     void OnMove(InputValue value)
     {
-        MoveAmount = new Vector3((value.Get<Vector2>().x), 0, (value.Get<Vector2>().y)) * 1;
+        moveAmount = Vector3.ProjectOnPlane(transform.TransformDirection(new Vector3((value.Get<Vector2>().x), 0, (value.Get<Vector2>().y)) * 0.5f), Vector3.up);
     }
 }

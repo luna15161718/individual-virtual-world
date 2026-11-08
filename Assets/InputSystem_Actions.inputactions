@@ -268,7 +268,7 @@
                     "id": "2a0944a4-a844-44c1-91f5-c2edd2e5f9f9",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "ScaleVector2(x=5,y=5)",
+                    "processors": "ScaleVector2(x=7.5,y=7.5)",
                     "groups": ";Keyboard&Mouse",
                     "action": "Look",
                     "isComposite": false,
