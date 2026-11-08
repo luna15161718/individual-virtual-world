@@ -25,6 +25,6 @@ public class Movement : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        MoveAmount = new Vector3(value.Get<Vector2>().x, 0, value.Get<Vector2>().y) * 5;
+        MoveAmount = new Vector3((value.Get<Vector2>().x), 0, (value.Get<Vector2>().y)) * 1;
     }
 }
