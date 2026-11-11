@@ -8,9 +8,9 @@ public class MoveDoor : MonoBehaviour
     void Start()
     {
         ProBuilderMesh mesh = GetComponent<ProBuilderMesh>();
-        foreach (Face face in mesh.faces) {
-            mesh.DeleteFace(face);
-        }
+        VertexEditing.SplitVertices(mesh, mesh.faces[549].distinctIndexes);
+        VertexPositioning.TranslateVertices(mesh, mesh.faces[549].distinctIndexes, mesh.transform.InverseTransformDirection(Vector3.down * 10));
+        //mesh.DeleteFace(mesh.faces[549]);
         mesh.ToMesh();
         mesh.Refresh();
 

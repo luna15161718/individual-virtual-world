@@ -21,8 +21,8 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        controller.Move(moveAmount);
         transform.rotation = Camera.main.transform.rotation;
+        controller.Move(transform.TransformDirection(moveAmount));
         if(!controller.isGrounded) {
             controller.Move(new Vector3(0, -2, 0));
         }
@@ -30,6 +30,6 @@ public class Movement : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        moveAmount = Vector3.ProjectOnPlane(transform.TransformDirection(new Vector3((value.Get<Vector2>().x), 0, (value.Get<Vector2>().y)) * 0.5f), Vector3.up);
+        moveAmount = Vector3.ProjectOnPlane((new Vector3((value.Get<Vector2>().x), 0, (value.Get<Vector2>().y)) * 0.5f), Vector3.up);
     }
 }
