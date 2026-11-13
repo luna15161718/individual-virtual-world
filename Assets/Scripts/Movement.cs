@@ -30,6 +30,6 @@ public class Movement : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        moveAmount = Vector3.ProjectOnPlane((new Vector3((value.Get<Vector2>().x), 0, (value.Get<Vector2>().y)) * 0.5f), Vector3.up);
+        moveAmount = Vector3.ProjectOnPlane((new Vector3((value.Get<Vector2>().x), 0, (value.Get<Vector2>().y)) * 0.25f), Vector3.up);
     }
 }
